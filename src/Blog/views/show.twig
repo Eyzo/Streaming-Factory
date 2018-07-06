@@ -1,0 +1,140 @@
+{% extends 'layout.twig' %}
+
+{% block title post.name %}
+
+
+{% block body %}
+
+<div class="col-md-12">
+  <div class="pageok">
+  <div class="row">
+
+    <div class="col-md-12">
+      <h1 style="text-align: center;">{{ post.name }}</h1>
+    </div>
+
+    <div class = "col-md-6">
+      {% if post.image %}
+      <img src="{{ post.image_url }}" alt="{{ post.name }}" style="width:100%; height: 300px;">
+      {% endif %}
+    </div>
+
+    <div class="col-md-6">
+      
+      <strong>Synopsis : </strong><p style="display: inline;">{{ post.content | nl2br }}</p>
+      </br>
+      <strong>date d'ajout :</strong> 
+      <p class="text-muted" style="display: inline;">
+      {{ post.createdAt | ago }}
+      </p>
+      </br>
+      {% if post_genres %}
+      <strong>genre : </strong>
+      {% for genreName in post_genres %}
+      <a href="{{ path('blog.genre', {slug_category:category.slug,slug_genre: genreName.slug}) }}" title="{{ post.categoryName }}">{{ genreName.name }}</a>
+      {% endfor %}
+      {% endif %}
+
+      <div class="vote">
+       <div class="vote_bar">
+         <div class="vote_progress" style="width:{% if (post.likeCount * post.dislikeCount) == 0 %}100{% else %}{{ 100 * (post.likeCount / ( post.likeCount + post.dislikeCount )) }}{% endif %}%;"></div>
+       </div> 
+       <div class="vote_btns">
+        <form action="{{ path('blog.like',{slug_post:post.slug,vote:1}) }}" method="POST">
+
+        {{ csrf_input() }}
+         <button type="submit" class="vote_btn vote_like   "><i class="far fa-thumbs-up"></i> {{ post.likeCount }}</button> 
+
+         </form>
+         
+         <form action="{{ path('blog.like',{slug_post:post.slug,vote:-1}) }}" method="POST">
+
+          {{ csrf_input() }}
+         <button type="submit" class="vote_btn vote_dislike"><i class="far fa-thumbs-down"></i> {{ post.dislikeCount }}</button> 
+         
+         </form>
+       </div>
+      </div>
+
+    </div>
+    
+
+    <div class="col-md-12" style="margin-top:10px; ">
+
+      <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+      <li class="nav-item">
+      <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="false">VF</a>
+      </li>
+      <li class="nav-item">
+      <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">VOSTFR</a>
+      </li>
+      </ul>
+
+      
+    
+      <div class="tab-content" id="pills-tabContent">
+
+        <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+        
+          {% if episodes_vf  %}
+          {% for row in episodes_vf | batch(5) %}
+          <div class="list-group" id="episodes">
+            {% for episo in row %}
+            <div class="list-group-item" style="width: 20%;border: none;">
+              <a style="width: 100%" href="{{ path('blog.episode', {slug_post:post.slug,slug_episode:episo.slug}) }}" class="btn btn-primary">{% if category.name == 'films' %}film {% else %}épisode {{ episo.episodeNum }}{% endif %}</a> 
+            </div>
+            {% endfor %}
+          </div>
+          {% endfor %}
+          {% endif %}
+
+        </div>
+
+        <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+
+
+          {% if episodes_vostfr %}
+          {% for row in episodes_vostfr | batch(5) %}
+          <div class="list-group" id="episodes">
+            {% for episo in row %}
+            <div class="list-group-item" style="width: 20%;border: none;">
+              <a style="width: 100%;" href="{{ path('blog.episode', {slug_post:post.slug,slug_episode:episo.slug}) }}" class="btn btn-primary">{% if category.name == 'films' %}film {% else %}épisode {{ episo.episodeNum }}{% endif %}</a>
+            </div>
+            {% endfor %}
+          </div>
+          {% endfor %}
+          {% endif %}
+
+        </div>
+
+      </div>
+
+    </div>
+  <div class="col-md-12">
+    <form id="form-comment" action="" method="post" style="margin: 15px;">
+      <input type="hidden" name="parent_id" value="0" id="parent_id">
+      <h4>Poster un commentaire</h4>
+      <div class="form-group">
+        {{ csrf_input() }}
+        <textarea class="form-control" name="content" rows="5" placeholder="Votre commentaire" required></textarea>
+      </div>
+      <div class="form-group">
+        <button type="submit" class="btn btn-primary">Commenter</button>
+      </div>
+    </form>
+    <div class="commentaire card-deck">
+    {% for comment in comments %}
+    {% include '@Blog/comment.twig' %}
+
+    {% endfor %}
+    </div>
+  
+</div>
+  </div>
+
+  </div>
+</div>
+
+	
+
+{% endblock %}

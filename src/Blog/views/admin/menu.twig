@@ -1,0 +1,18 @@
+<li class="nav-item">
+	<a  class="nav-link {{ is_subpath('blog.category.admin.index') ? 'active'}} " href=" {{ path('blog.category.admin.index') }}"  >Catégories</a>
+</li>
+<li class="nav-item">
+	<a class="nav-link {{ is_subpath('blog.admin.index') ? 'active'}}"  href=" {{ path('blog.admin.index') }}" >Oeuvres</a>
+</li>
+<li class="nav-item">
+	<a  class="nav-link {{ is_subpath('blog.genre.admin.index') ? 'active'}} " href=" {{ path('blog.genre.admin.index') }}"  >Genres</a>
+</li>
+<li class="nav-item">
+	<a  class="nav-link {{ is_subpath('blog.version.admin.index') ? 'active'}} " href=" {{ path('blog.version.admin.index') }}"  >Versions</a>
+</li>
+<li class="nav-item">
+	<a  class="nav-link {{ is_subpath('blog.lecteurvideo.admin.index') ? 'active'}} " href=" {{ path('blog.lecteurvideo.admin.index') }}"  >Lecteurs Videos</a>
+</li>
+<li class="nav-item">
+	<a class="nav-link {{ is_subpath('blog.admin.commentaire.index') ? 'active' }} " href="{{ path('blog.admin.commentaire.index') }}">Commentaires</a>
+</li>

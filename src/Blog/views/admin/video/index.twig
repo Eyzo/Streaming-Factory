@@ -1,0 +1,51 @@
+{% extends '@Admin/layout.twig' %}
+
+{% block title "Editer les Episodes" %}
+
+
+{% block body %}
+<h1>
+  {{ episode.slug }}
+</h1>
+
+<p class="text-left">
+  <a href="{{ path('blog.episode.admin.index',{id_oeuvre:episode.postId,id_version:episode.versionId}) }}" class="btn btn-primary">
+    Retour aux episodes
+  </a>
+</p>
+
+<p class="text-right">
+  <a href="{{ path(routePrefix ~'.create',{id_episode:episode.id}) }}" class="btn btn-primary">
+    Ajouter une Video
+  </a>
+</p>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <td>Nom du lecteur</td>
+      <td>Lien</td>
+      <td>Actions Video</td>
+    </tr>
+    <tbody>
+    {% set token_input =  csrf_input() %}
+      {% for item in items%}
+      <tr>
+      <td>{{ item.name }}</td>
+      <td>{{ item.lien }}</td>
+      <td>
+        <a href="{{ path(routePrefix ~ '.edit',{id_episode:episode.id,id:item.id}) }}" class="btn btn-primary">Editer</a>
+         <form style="display: inline" action="{{ path(routePrefix ~ '.delete',{ id_episode:episode.id,id:item.id }) }}" method="POST" onsubmit="return confirm('êtes vous sûr ?')">
+         <input type="hidden" name="_method" value="DELETE">
+         <button class="btn btn-danger">supprimer</button>
+         {{ token_input | raw }}
+         </form>
+      </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </thead>
+</table>
+
+{% endblock %}
+

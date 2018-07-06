@@ -1,0 +1,17 @@
+{% extends '@Admin/layout.twig' %}
+
+{% block title "Editer l'episode" %}
+
+
+{% block body %}
+
+<h1>Editer l'episode de {{ post.name }}:</h1>
+ 
+<form action="{{ path(routePrefix ~'.edit',{id_oeuvre:id_oeuvre,id_version:id_version,id:id}) }}" method="POST">
+	{% include viewPath ~ '/form.twig' %}
+	<button type="submit" class="btn btn-primary">Editer</button>
+</form>
+
+
+
+{% endblock %}

@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html>
+<head>
+		<meta charset="utf-8">
+		<title>{% block title "Mon site " %}</title>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+		<link rel="stylesheet" type="text/css" href="/css/stylesheet.css" media="all">
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
+		
+    
+</head>
+<body style="min-width: 1100px;">
+
+
+<div id="title"><h1><a class="navbar-brand" href="{{ path('blog.index') }}">Streaming Factory</a></h1></div>
+
+<nav class="navbar navbar-expand-lg" id="menu">
+		
+		{% if categories %}
+		<ul class="navbar-nav " id="page">
+		<div id="page-menu">
+			 {% for c in categories %}
+					<li class="nav-link {% if c.id == category.id %}active{% endif %}" id="page-menu-item">
+						<a class="menu-category" href="{{ path('blog.category', {slug_category: c.slug}) }}">{{ c.name }}
+						</a>
+					</li>
+			 {% endfor %}
+		</div>
+		</ul>
+		{% endif %}
+
+	
+
+<ul class="navbar-nav" id="alphabet">
+
+{% if category %}
+<li>
+<a href="{{ path('blog.alphabet',{slug_category:category.slug , alphabet:0 }) }}" >0</a>
+</li>
+
+<li>
+<a href="{{ path('blog.alphabet',{slug_category:category.slug , alphabet:1 }) }}" >1</a>
+</li>
+
+<li>
+<a href="{{ path('blog.alphabet',{slug_category:category.slug , alphabet:2 }) }}" >2</a>
+</li>
+
+<li>
+<a href="{{ path('blog.alphabet',{slug_category:category.slug , alphabet:3 }) }}" >3</a>
+</li>
+
+<li>
+<a href="{{ path('blog.alphabet',{slug_category:category.slug , alphabet:4 }) }}" >4</a>
+</li>
+
+<li>
+<a href="{{ path('blog.alphabet',{slug_category:category.slug , alphabet:5 }) }}" >5</a>
+</li>
+
+<li>
+<a href="{{ path('blog.alphabet',{slug_category:category.slug , alphabet:6 }) }}" >6</a>
+</li>
+
+<li>
+<a href="{{ path('blog.alphabet',{slug_category:category.slug , alphabet:7 }) }}" >7</a>
+</li>
+
+<li>
+<a href="{{ path('blog.alphabet',{slug_category:category.slug , alphabet:8 }) }}" >8</a>
+</li>
+
+<li>
+<a href="{{ path('blog.alphabet',{slug_category:category.slug , alphabet:9 }) }}" >9</a>
+</li>
+
+<li>
+<a href="{{ path('blog.alphabet',{slug_category:category.slug , alphabet:'A' }) }}" >A</a>
+</li>
+
+<li>
+<a href="{{ path('blog.alphabet',{slug_category:category.slug , alphabet:'B' }) }}" >B</a>
+</li>
+
+<li>
+<a href="{{ path('blog.alphabet',{slug_category:category.slug , alphabet:'C' }) }}" >C</a>
+</li>
+
+<li>
+<a href="{{ path('blog.alphabet',{slug_category:category.slug , alphabet:'D' }) }}" >D</a>
+</li>
+
+<li>
+<a href="{{ path('blog.alphabet',{slug_category:category.slug , alphabet:'E' }) }}" >E</a>
+</li>
+
+<li>
+<a href="{{ path('blog.alphabet',{slug_category:category.slug , alphabet:'F' }) }}" >F</a>
+</li>
+
+<li>
+<a href="{{ path('blog.alphabet',{slug_category:category.slug , alphabet:'G' }) }}" >G</a>
+</li>
+
+<li>
+<a href="{{ path('blog.alphabet',{slug_category:category.slug , alphabet:'H' }) }}" >H</a>
+</li>
+
+<li>
+<a href="{{ path('blog.alphabet',{slug_category:category.slug , alphabet:'I' }) }}" >I</a>
+</li>
+
+<li>
+<a href="{{ path('blog.alphabet',{slug_category:category.slug , alphabet:'J' }) }}" >J</a>
+</li>
+
+<li>
+<a href="{{ path('blog.alphabet',{slug_category:category.slug , alphabet:'K' }) }}" >K</a>
+</li>
+
+<li>
+<a href="{{ path('blog.alphabet',{slug_category:category.slug , alphabet:'L' }) }}" >L</a>
+</li>
+
+<li>
+<a href="{{ path('blog.alphabet',{slug_category:category.slug , alphabet:'M' }) }}" >M</a>
+</li>
+
+<li>
+<a href="{{ path('blog.alphabet',{slug_category:category.slug , alphabet:'N' }) }}" >N</a>
+</li>
+
+<li>
+<a href="{{ path('blog.alphabet',{slug_category:category.slug , alphabet:'O' }) }}" >O</a>
+</li>
+
+<li>
+<a href="{{ path('blog.alphabet',{slug_category:category.slug , alphabet:'P' }) }}" >P</a>
+</li>
+
+<li>
+<a href="{{ path('blog.alphabet',{slug_category:category.slug , alphabet:'Q' }) }}" >Q</a>
+</li>
+
+<li>
+<a href="{{ path('blog.alphabet',{slug_category:category.slug , alphabet:'R' }) }}" >R</a>
+</li>
+
+<li>
+<a href="{{ path('blog.alphabet',{slug_category:category.slug , alphabet:'S' }) }}" >S</a>
+</li>
+
+<li>
+<a href="{{ path('blog.alphabet',{slug_category:category.slug , alphabet:'T' }) }}" >T</a>
+</li>
+
+<li>
+<a href="{{ path('blog.alphabet',{slug_category:category.slug , alphabet:'U' }) }}" >U</a>
+</li>
+
+<li>
+<a href="{{ path('blog.alphabet',{slug_category:category.slug , alphabet:'V' }) }}" >V</a>
+</li>
+
+<li>
+<a href="{{ path('blog.alphabet',{slug_category:category.slug , alphabet:'W' }) }}" >W</a>
+</li>
+
+<li>
+<a href="{{ path('blog.alphabet',{slug_category:category.slug , alphabet:'X' }) }}" >X</a>
+</li>
+
+<li>
+<a href="{{ path('blog.alphabet',{slug_category:category.slug , alphabet:'Y' }) }}" >Y</a>
+</li>
+
+<li>
+<a href="{{ path('blog.alphabet',{slug_category:category.slug , alphabet:'Z' }) }}" >Z</a>
+</li>
+{% endif %}
+
+	{% if genres %}
+	<li id=menu-dropdown class="dropdown">
+		<a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+			Genres <span class="caret"></span>
+		</a>
+		<ul class="dropdown-menu">
+			{% for g in genres %}
+				<a class="list-group-item {% if g.id == genre.id %}active{% endif %}" href="{{ path('blog.genre', {slug_category:category.slug,slug_genre: g.slug}) }}">{{ g.name }}</a>
+				{% endfor %}
+		</ul>
+	</li>
+	{% endif %}  
+
+
+ <li style="margin: auto;"> 
+	<form method="post" action="{{ path('blog.search.post') }}">
+	{{ csrf_input() }}
+	<input style="border-radius: 0.5em;" placeholder="Rechercher" type="text" name="search">
+	
+	</form>
+	</li>
+
+
+</ul>
+ 
+			 
+		
+</nav>
+
+
+
+<div class="container-fluid" id="content">
+<div class="row">
+
+<div class="col-md-2">
+	
+</div>
+
+<div class="col-md-8" id="main-content">
+		{% block body %}
+		{% endblock %}
+</div>    
+
+<div class="col-md-2" id="right-content">
+
+<div class="row">
+	<div class="col-md-12" style="margin-bottom: 15px;">
+		<div class="pageok">
+			<h4 style="text-align: center;">Menu</h4>
+			<li style="list-style-type:none;border: 1px solid rgba(0,0,0,.125);border-radius: 0.5em;background-color: #f7f7f7;" class="nav-item">
+				<a style="text-align: center;" class="nav-link" href="{{ path('contact') }}"><strong>Nous Contacter</strong></a>
+			</li>
+		</div>
+	</div>
+
+ {% if saisons %}
+ <div class="col-md-12">
+	<div class="pageok">
+	
+		<h4 style="text-align: center;">Liste des saisons</h4>
+	
+	
+			{% for row in saisons | batch(1) %}
+					<div class="card-deck" id="card-right" style="width: 100%;">
+						{% for saison in row %}
+							<div class="card">
+								<a href="{{ path('blog.show', {slug_post: saison.slug}) }}">
+									<div class="card-header">
+									<h4 style="text-align: center;"><div>{{ saison.name }}</div></h4>
+									<div class="row justify-content-between">
+									
+									</div>
+									</div>
+								
+								{% if post.image %}
+									<img src="{{ saison.thumb }}" alt="{{ saison.name }}" style="width:100%;">
+								{% endif %}
+								</a>
+							</div>
+						{% endfor %}
+					</div>
+				{% endfor %}
+			
+			{% endif %}
+	</div>
+	</div>
+	</div>
+</div>
+		
+	</div><!--/.row -->
+</div><!-- /.container -->
+
+<!-- Footer -->
+<footer class="page-footer">
+
+	 <!-- Footer Links -->
+	<div class="container-fluid" id="footer">
+
+		<!-- Grid row-->
+		<div class="row">
+
+			<!-- Grid column -->
+			<div class="col-md-2">
+				
+			</div>
+
+			
+			
+			<div class="col-md-7" id="footer-container">
+
+Streaming Factory est un site de streaming gratuit. Il ne consiste qu'en un référencement de liens vidéo stockées par des hébergeurs publics et légalement reconnus (Youtube, Dailymotion, Rutube, etc). Aucun fichier n'est hébergé sur nos serveurs. Si vous rencontrez un quelconque problème merci de contacter lesdits hébergeurs et non nous.
+
+			</div>
+
+			<div class="col-md-3" id="footer-contact">
+			<h5>Contact :</h5>
+			<p>duhameltonyeyzo@gmail.com</p>  
+			</div>
+			
+			
+
+			<div class="col-md-2">
+				
+			</div>
+	<!-- Footer Links -->
+<div class="container-fluid" id="Copyright-container">
+	<!-- Copyright -->
+	<div class="footer-copyright text-center" id="footer-copyright">© 2018 Copyright:
+		<a href="{{ path('blog.index') }}"> StreamingFactory.com</a>
+	</div>
+	<!-- Copyright -->
+</div>
+
+</footer>
+<!-- Footer -->
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/timeago.js/3.0.2/timeago.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/timeago.js/3.0.2/timeago.locales.min.js"></script>
+<script>
+		timeago().render(document.querySelectorAll('.timeago'), 'fr')
+</script>
+ <script id="cid0020000185784683850" data-cfasync="false" async src="//st.chatango.com/js/gz/emb.js" style="width: 300px;height: 500px;">{"handle":"streamingfactory","arch":"js","styles":{"a":"0084ef","b":100,"c":"FFFFFF","d":"FFFFFF","k":"0084ef","l":"0084ef","m":"0084ef","n":"FFFFFF","p":"10","q":"0084ef","r":100,"cv":1,"cvbg":"0084ef","cvw":125,"cvh":58,"fwtickm":1,"pos":"br"}}</script>
+<script src="/js/app.js"></script>
+<script defer src="https://use.fontawesome.com/releases/v5.1.0/js/all.js" integrity="sha384-3LK/3kTpDE/Pkp8gTNp2gR/2gOiwQ6QaO7Td0zV76UFJVhqLl4Vl3KL1We6q6wR9" crossorigin="anonymous"></script>
+
+
+</body>
+</html>

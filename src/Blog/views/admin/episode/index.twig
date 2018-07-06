@@ -1,0 +1,53 @@
+{% extends '@Admin/layout.twig' %}
+
+{% block title "Editer les Episodes" %}
+
+
+{% block body %}
+<p class="text-left">
+  <a href="{{ path('blog.choice.admin.index',{id_oeuvre:post.id}) }}" class="btn btn-primary">
+    Retour aux choix de versions
+  </a>
+</p>
+
+<p class="text-right">
+  <a href="{{ path(routePrefix ~'.create',{id_oeuvre:post.id,id_version:version.id }) }}" class="btn btn-primary">
+    Ajouter un Episode {{ version.name }} à {{ post.name }}
+  </a>
+</p>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <td>Titre</td>
+      <td>Numero Episode</td>
+      <td>version</td>
+      <td>Actions Episode</td>
+      <td>Action Video</td>
+    </tr>
+    <tbody>
+    {% set token_input =  csrf_input() %}
+      {% for item in items%}
+      <tr>
+      <td>{{ item.slug }}</td>
+      <td>{{ item.episodeNum }}</td>
+      <td>{{ item.versionName }}</td>
+      <td>
+        <a href="{{ path(routePrefix ~ '.edit',{id_oeuvre:item.postId,id_version:item.versionId,id:item.id}) }}" class="btn btn-primary">Editer</a>
+         <form style="display: inline" action="{{ path(routePrefix ~'.delete',{id_oeuvre:item.postId,id_version:item.versionId,id:item.id}) }}" method="POST" onsubmit="return confirm('êtes vous sûr ?')">
+         <input type="hidden" name="_method" value="DELETE">
+         <button class="btn btn-danger">supprimer</button>
+         {{ token_input | raw }}
+         </form>
+      </td>
+      <td>
+        <a href="{{ path('blog.video.admin.index',{id_episode:item.id}) }}" class="btn btn-primary">Videos</a>
+      </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </thead>
+</table>
+
+{% endblock %}
+

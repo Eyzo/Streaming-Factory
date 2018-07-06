@@ -1,0 +1,42 @@
+{% extends '@Admin/layout.twig' %}
+
+{% block title "Editer les Episodes" %}
+
+
+{% block body %}
+<h1>
+  {{ post.name }}
+</h1>
+
+<p class="text-right">
+  <a href="{{ path('blog.postgenre.admin.create',{id_oeuvre:post.id}) }}" class="btn btn-primary">
+    Ajouter un Genre 
+  </a>
+</p>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <td>Genre</td>
+      <td>Actions</td>
+    </tr>
+    <tbody>
+    {% set token_input =  csrf_input() %}
+      {% for item in items%}
+      <tr>
+      <td> {{ item.name }} </td>
+      <td>
+         <form style="display: inline" action="{{ path('blog.postgenre.admin.delete',{id_oeuvre:item.idPost,id:item.idGenre}) }}" method="POST" onsubmit="return confirm('êtes vous sûr ?')">
+         <input type="hidden" name="_method" value="DELETE">
+         <button class="btn btn-danger">supprimer</button>
+         {{ token_input | raw }}
+         </form>
+      </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </thead>
+</table>
+
+{% endblock %}
+

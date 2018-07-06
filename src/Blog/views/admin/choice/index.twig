@@ -1,0 +1,32 @@
+{% extends '@Admin/layout.twig' %}
+
+{% block title "Editer les Episodes" %}
+
+
+{% block body %}
+<h2>Episode de {{ post.name }}</h2>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <td>Langue</td>
+      <td>Action Episodes</td>
+    </tr>
+    <tbody>
+    {% set token_input =  csrf_input() %}
+      {% for item in items%}
+      <tr>
+      <td>{{ item.name }}</td>
+      <td>
+        <a href="{{ path('blog.episode.admin.index',{id_oeuvre:post.id,id_version:item.id}) }}" class="btn btn-primary">Episodes</a>
+      </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </thead>
+</table>
+
+
+{{ paginate(items,routePrefix ~ '.index') }}
+
+{% endblock %}

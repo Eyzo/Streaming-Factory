@@ -1,0 +1,17 @@
+{% extends '@Admin/layout.twig' %}
+
+{% block title "Editer la version " %}
+
+
+{% block body %}
+
+<h1>Editer la version :{{ item.name }}</h1>
+
+<form action=" {{path(routePrefix ~ '.edit',{id:item.id})}}" method="POST">
+	{% include viewPath ~ '/form.twig' %}
+	<button type="submit" class="btn btn-primary">Editer</button>
+</form>
+
+
+
+{% endblock %}

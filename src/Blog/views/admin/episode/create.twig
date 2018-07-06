@@ -1,0 +1,18 @@
+{% extends '@Admin/layout.twig' %}
+
+{% block title "Editer l'Episode" %}
+
+
+{% block body %}
+
+<h1>Ajouter un episode à {{ post.name }}:</h1>
+
+<form action="" method="POST" >
+ {% include viewPath ~ '/form.twig' %}
+	<button type="submit" class="btn btn-primary">Ajouter</button>
+
+</form>
+
+
+
+{% endblock %}

@@ -1,0 +1,35 @@
+{% extends '@Admin/layout.twig' %}
+
+{% block title "Editer les Commentaires" %}
+
+
+{% block body %}
+
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <td>Oeuvre</td>
+      <td>Commentaire</td>
+      <td>Action Commentaire</td>
+    </tr>
+    <tbody>
+    {% set token_input =  csrf_input() %}
+      {% for comment in comments%}
+      <tr>
+      <td>{{ comment.name }}</td>
+      <td>{{ comment.content }}</td>
+      <td>
+         <form style="display: inline" action="{{ path('blog.admin.commentaire.delete',{id:comment.id}) }}" method="POST" onsubmit="return confirm('êtes vous sûr ?')">
+         <input type="hidden" name="_method" value="DELETE">
+         <button class="btn btn-danger">supprimer</button>
+         {{ token_input | raw }}
+         </form>
+      </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </thead>
+</table>
+
+{% endblock %}

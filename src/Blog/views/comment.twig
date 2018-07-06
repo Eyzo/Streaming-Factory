@@ -1,0 +1,29 @@
+<div class="col-md-12">
+<div class="row">
+
+<div class="col-1" style="padding-right: 0px;">
+<img src="/upload/img/user-image.png" style="width: 100%;">
+</div>
+<div class="col-11" style="padding-left: 0px;">
+<div class="card" id="comment-{{ comment.id }}">
+	<div class="card-body">
+
+		<p>{{ comment.content }}</p>
+		{% if comment.depth <= 1 %}
+		<p class="text-right" >
+			<button class="btn btn-default reply" data-id="{{ comment.id }}">Repondre</button>
+		</p>
+		{% endif %}
+	</div>
+</div>
+</div>
+</div>	
+</div>
+
+<div style="margin-left: 50px;">
+{% if comment.children %}
+{% for comment in comment.children %}
+{% include '@Blog/comment.twig' %}
+{% endfor %}
+{% endif %}
+</div>

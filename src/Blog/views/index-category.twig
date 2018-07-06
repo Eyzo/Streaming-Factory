@@ -1,0 +1,64 @@
+{% extends 'layout.twig' %}
+
+{% block title %}
+  {% if category %}
+    Catégorie : {{ category.name }}
+  {% endif %}
+{% endblock %}
+
+{% block body %}
+
+  <div class="col-md-12">
+      <div class="row">
+      {% for row in posts | batch(4) %}
+          <div class="card-deck" style="width: 100%;">
+            {% for post in row %}
+              <div class="card">
+                <a href="{{ path('blog.show', {slug_post: post.slug}) }}">
+                  <div class="card-header">
+                  <h4 style="text-align: center;"><div>{{ post.name }}</div></h4>
+                  <div class="row justify-content-between">
+                  
+                  </div>
+                  </div>
+                
+                {% if post.image %}
+                  <img src="{{ post.thumb }}" alt="{{ post.name }}" style="width:100%;">
+                {% endif %}
+                <div class="card-block">
+                  
+                    
+                      
+                    
+                  
+                  <p class="card-text">
+                    {{ post.content | excerpt | nl2br }}
+                  </p>
+                  <p class="text-muted">{{ post.createdAt | ago }}</p>
+                </div>
+                <div class="card-footer">
+                  <a href="{{ path('blog.show', {slug_post: post.slug}) }}" class="btn btn-primary">
+                    Voir l'oeuvre
+                  </a>
+                </div>
+                </a>
+              </div>
+            {% endfor %}
+          </div>
+        {% endfor %}
+      </div>
+
+      
+      
+        
+      
+      {% if category and alphabettri %}
+        {{ paginate(posts, 'blog.alphabet', {slug_category:category.slug,alphabet:alphabettri }) }}
+      {% else %}
+      {{ paginate(posts, 'blog.category', {slug_category:category.slug }) }}
+      {% endif %}
+      
+
+    </div>
+
+{% endblock %}

@@ -1,0 +1,11 @@
+{{ csrf_input() }}
+<div class="row">
+
+  <div class="col-md-4">
+  {{ field('lien',item.lien,"Lien de la video",{type:'textarea'}) }}
+  </div>
+  <div class="col-md-4">
+    {{ field('id_lecteur', item.idLecteur, "Lecteur Video", {options: lecteurliste }) }}
+  </div>
+</div>
+
