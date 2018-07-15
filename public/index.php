@@ -17,7 +17,7 @@ $app= (new Framework\App(dirname(__DIR__).'/config/config.php'))
 $container = $app->getContainer();
 
 $app->pipe(Framework\Middleware\TrailingSlashMiddleware::class)
-/*->pipe(Framework\Middleware\NoRecordExceptionMiddleware::class)*/
+->pipe(Framework\Middleware\NoRecordExceptionMiddleware::class)
 ->pipe(App\Auth\Middleware\ForbiddenMiddleware::class)
 ->pipe($container->get('admin.prefix'),Framework\Auth\LoggedInMiddleware::class)
 ->pipe(Framework\Middleware\MethodMiddleware::class)

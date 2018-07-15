@@ -6,6 +6,9 @@
   <div class="col-md-4">
     {{ field('slug', item.slug, "Lien") }}
   </div>
+    <div class="col-md-4">
+    {{ field('name', item.name, "Nom") }}
+  </div>
   {{ field('created_at',item.createdAt,"Date de création",{ class:'datepicker' }) }}
 </div>
 

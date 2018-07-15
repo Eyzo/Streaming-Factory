@@ -33,7 +33,7 @@ class TrailingSlashMiddleware
         if ($uri === '/') {
             return (new Response())
             ->withStatus(200)
-            ->withHeader('Location', '/blog');
+            ->withHeader('Location', '/streaming');
 
         }
         return $next($request);

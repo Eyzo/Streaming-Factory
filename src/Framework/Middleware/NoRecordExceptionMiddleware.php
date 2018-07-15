@@ -24,7 +24,7 @@ class NoRecordExceptionMiddleware implements MiddlewareInterface
  		{
  			
  			
- 			return new RedirectResponse('/blog');
+ 			return new RedirectResponse('/streaming');
 
  		}
  		

@@ -160,7 +160,7 @@ class EpisodeCrudAction extends CrudAction
         $params = array_merge($request->getParsedBody());
         
         return $params = array_filter($params, function ($key) {
-            return in_array($key, ['episode_num', 'slug','created_at']);
+            return in_array($key, ['episode_num', 'slug','created_at','name']);
         }, ARRAY_FILTER_USE_KEY);
     }
 
@@ -170,8 +170,9 @@ class EpisodeCrudAction extends CrudAction
    protected function getValidator(ServerRequestInterface $request)
     {
         return parent::getValidator($request)
-            ->required('episode_num', 'slug','created_at')
+            ->required('episode_num', 'slug','created_at','name')
             ->length('slug', 2, 100)
+            ->length('name',2,100)
             ->dateTime('created_at')
             ->unique('slug', $this->table->getTable(), $this->table->getPdo(), $request->getAttribute('id'));
     }

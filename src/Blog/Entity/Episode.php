@@ -8,6 +8,8 @@ class Episode
 
 	public $episodeNum;
 
+	public $name;
+
 	public $slug;
 
 	public $createdAt;

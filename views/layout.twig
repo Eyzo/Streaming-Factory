@@ -9,7 +9,7 @@
 		
     
 </head>
-<body style="min-width: 1100px;">
+<body>
 
 
 <div id="title"><h1><a class="navbar-brand" href="{{ path('blog.index') }}">Streaming Factory</a></h1></div>
@@ -196,7 +196,7 @@
  <li style="margin: auto;"> 
 	<form method="post" action="{{ path('blog.search.post') }}">
 	{{ csrf_input() }}
-	<input style="border-radius: 0.5em;" placeholder="Rechercher" type="text" name="search">
+	<input class="recherche" placeholder="Rechercher" type="text" name="search">
 	
 	</form>
 	</li>
@@ -225,11 +225,11 @@
 <div class="col-md-2" id="right-content">
 
 <div class="row">
-	<div class="col-md-12" style="margin-bottom: 15px;">
+	<div class="right-column col-md-12">
 		<div class="pageok">
-			<h4 style="text-align: center;">Menu</h4>
-			<li style="list-style-type:none;border: 1px solid rgba(0,0,0,.125);border-radius: 0.5em;background-color: #f7f7f7;" class="nav-item">
-				<a style="text-align: center;" class="nav-link" href="{{ path('contact') }}"><strong>Nous Contacter</strong></a>
+			<h4 class="menu-right">Menu</h4>
+			<li class="menu-right-item nav-item">
+				<a class="nav-link" href="{{ path('contact') }}"><strong>Me Contacter</strong></a>
 			</li>
 		</div>
 	</div>
@@ -238,23 +238,23 @@
  <div class="col-md-12">
 	<div class="pageok">
 	
-		<h4 style="text-align: center;">Liste des saisons</h4>
+		<h4 class="menu-right" >Liste des saisons</h4>
 	
 	
 			{% for row in saisons | batch(1) %}
-					<div class="card-deck" id="card-right" style="width: 100%;">
+					<div class="card-deck" id="card-right">
 						{% for saison in row %}
 							<div class="card">
 								<a href="{{ path('blog.show', {slug_post: saison.slug}) }}">
 									<div class="card-header">
-									<h4 style="text-align: center;"><div>{{ saison.name }}</div></h4>
+									<h4><div>{{ saison.name }}</div></h4>
 									<div class="row justify-content-between">
 									
 									</div>
 									</div>
 								
 								{% if post.image %}
-									<img src="{{ saison.thumb }}" alt="{{ saison.name }}" style="width:100%;">
+									<img class="saison-img" src="{{ saison.thumb }}" alt="{{ saison.name }}">
 								{% endif %}
 								</a>
 							</div>
@@ -326,7 +326,7 @@ Streaming Factory est un site de streaming gratuit. Il ne consiste qu'en un réf
  <script id="cid0020000185784683850" data-cfasync="false" async src="//st.chatango.com/js/gz/emb.js" style="width: 300px;height: 500px;">{"handle":"streamingfactory","arch":"js","styles":{"a":"0084ef","b":100,"c":"FFFFFF","d":"FFFFFF","k":"0084ef","l":"0084ef","m":"0084ef","n":"FFFFFF","p":"10","q":"0084ef","r":100,"cv":1,"cvbg":"0084ef","cvw":125,"cvh":58,"fwtickm":1,"pos":"br"}}</script>
 <script src="/js/app.js"></script>
 <script defer src="https://use.fontawesome.com/releases/v5.1.0/js/all.js" integrity="sha384-3LK/3kTpDE/Pkp8gTNp2gR/2gOiwQ6QaO7Td0zV76UFJVhqLl4Vl3KL1We6q6wR9" crossorigin="anonymous"></script>
-
+<script src="/js/like.js"></script>
 
 </body>
 </html>

@@ -75,11 +75,15 @@ class EpisodeShowAction
 
        $episode = $this->episodeTable->findBy('slug',$request->getAttribute('slug_episode'));
 
+       if ($category->name === 'series' || $category->name === 'animes') 
+    	{  
+
         preg_match('/episode-[0-9]+/',$slug_episode, $matches, PREG_OFFSET_CAPTURE);
 
         preg_match('/[0-9]+/',$matches[0][0], $matches2, PREG_OFFSET_CAPTURE);
 
         $episodePaginated = $this->episodeTable->findAllEpisodesPostVersionAsc($post->id,$episode->versionId)->paginate(1,$matches2[0][0]);
+    	}
 
         $episode= $this->episodeTable->findEpisode($request->getAttribute('slug_episode'))->fetch();
 
@@ -91,13 +95,14 @@ class EpisodeShowAction
 
         $defaultVideo = $this->videoTable->findDefaultVideoForEpisode($episode->id,$this->defaultLecteur)->fetch();
 
+     
         while ($defaultVideo === false) 
         {
 
             $this->defaultLecteur++;
             $defaultVideo = $this->videoTable->findDefaultVideoForEpisode($episode->id,$this->defaultLecteur)->fetch();
         }
-
+	
         $video_liste = $this->videoTable->findVideoListeForEpisode($episode->id)->fetchAll();
 
         $genres = $this->genreTable->findAll();

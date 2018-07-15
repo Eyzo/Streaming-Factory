@@ -26,8 +26,10 @@
       {% autoescape false %}
       {{ defaultVideo.lien }}
       {% endautoescape %}
-      
+     
+     {% if category.name == 'series' or category.name == 'animes' %} 
      {{ paginateEpisode(episodePaginated,'blog.episode',{slug_post:post.slug,slug_episode:episode.slug}) }}
+     {% endif %}
      
       
   

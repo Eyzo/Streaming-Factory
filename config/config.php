@@ -17,7 +17,8 @@ return [
 \DI\get(\Framework\Twig\TimeExtension::class),
 \DI\get(\Framework\Twig\FlashExtension::class),
 \DI\get(\Framework\Twig\FormExtension::class),
-\DI\get(\Framework\Twig\CsrfExtension::class)
+\DI\get(\Framework\Twig\CsrfExtension::class),
+\DI\get(\Framework\Twig\SessionExtension::class)
 ],
 \Framework\Session\Sessioninterface::class=>\DI\object(Framework\Session\PHPSession::class),
 \App\Blog\Action\Crud\EpisodeCrudAction::class=>\DI\object(),
@@ -38,7 +39,7 @@ return [
 },
 
 	//MAILER
-	'mail.to'=>'admin@admin.fr',
+	'mail.to'=>'duhameltonyeyzo@gmail.com',
 	Swift_Mailer::class => \DI\factory(\Framework\Factory\SwiftMailerFactory::class)
 ];
 
