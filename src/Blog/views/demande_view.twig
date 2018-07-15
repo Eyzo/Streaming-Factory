@@ -1,0 +1,28 @@
+{% extends 'layout.twig' %}
+
+{% block title "demande d'ajout" %}
+
+{% block body %}
+
+<h1>Demande d'ajout</h1>
+
+  {% if flash('success') %}
+    <div class="alert alert-success">
+      {{ flash('success') }}
+    </div>
+  {% endif %}
+
+  {% if flash('error') %}
+    <div class="alert alert-danger">
+      {{ flash('error') }}
+    </div>
+  {% endif %}
+
+<form action="" method="post">
+	{{ csrf_input() }}
+	<label>Votre message</label>
+	<textarea class="form-control" name="content" rows="5"></textarea> 
+	<button style="margin-top: 15px;" type="submit" class="btn btn-primary">envoyer</button>
+</form>
+
+{% endblock %}

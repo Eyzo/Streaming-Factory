@@ -25,6 +25,7 @@ use App\Blog\Action\SearchShowAction;
 use App\Blog\Action\AddCommentAction;
 use App\Blog\Action\Crud\CommentaireCrudAction;
 use App\Blog\Action\LikeAction;
+use App\Blog\Action\DemandeAction;
 
 class BlogModule extends Module
 {
@@ -64,6 +65,9 @@ class BlogModule extends Module
 
         $router->post($container->get('blog.prefix').'/oeuvre/{slug_post:[a-z0-9\-]+}/like/{vote:[1\-]+}',LikeAction::class,'blog.like');
         
+        $router->get($container->get('blog.prefix').'/demande',DemandeAction::class,'blog.demande');
+
+        $router->post($container->get('blog.prefix').'/demande',DemandeAction::class);
 
         
 
